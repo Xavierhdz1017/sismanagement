@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Grade Management</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Grade Management</h2>
+
+        <!-- Form to Add a New Grade -->
+        <form method="POST" class="mb-4">
+            <div class="form-group">
+                <label for="student_id">Student ID:</label>
+                <input type="number" name="student_id" id="student_id" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" name="subject" id="subject" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="assignment">Assignment:</label>
+                <input type="text" name="assignment" id="assignment" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <input type="text" name="grade" id="grade" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Add Grade</button>
+        </form>
+
+        <!-- Display the List of Grades -->
+        <h3>Grade List</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Subject</th>
+                    <th>Assignment</th>
+                    <th>Grade</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in grades %}
+                    <tr>
+                        <td>{{ entry[1] }}</td>
+                        <td>{{ entry[2] }}</td>
+                        <td>{{ entry[3] }}</td>
+                        <td>{{ entry[4] }}</td>
+                        <td>{{ entry[5] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+    </div>
+</body>
+</html>

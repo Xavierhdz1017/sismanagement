@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Record Attendance</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Record Attendance for {{ student[0] }}</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select name="status" class="form-control" required>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Attendance</button>
+            <a href="{{ url_for('students') }}" class="btn btn-secondary">Back to Students</a>
+        </form>
+    </div>
+
+    <!-- Display Attendance Records -->
+    <div class="container mt-5">
+        <h2>Attendance Records</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in records %}
+                    <tr>
+                        <td>{{ record[1] }}</td>
+                        <td>{{ record[2] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

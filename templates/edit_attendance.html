@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Attendance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Edit Attendance</h2>
+        <form method="POST" action="{{ url_for('edit_attendance', id=record[0]) }}">
+            <div class="form-group">
+                <label>Status</label>
+                <select class="form-control" name="status" required>
+                    <option value="Present" {% if record[3] == 'Present' %}selected{% endif %}>Present</option>
+                    <option value="Absent" {% if record[3] == 'Absent' %}selected{% endif %}>Absent</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ url_for('attendance_records') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
+<a href="{{ url_for('edit_attendance', id=record[0]) }}" class="btn btn-warning btn-sm">Edit</a>
